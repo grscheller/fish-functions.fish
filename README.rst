@@ -1,16 +1,20 @@
 Fish Functions
 ==============
 
-Collections of fish functions geared to the Linux command line. See
+Collections of fish functions geared to typical Linux/Unix
+tooling. These functions are intended to be installer into
+your ``~/.config/fish/`` configuration files.
+
+- Install with `fisher <https://github.com/jorgebucaran/fisher>`_
+
+  - Fisher is the *de facto* Fish community plugin manager. 
+
+- Can also be installed manually.
+
+See
 `fish-functions
 <https://grscheller.github.io/fish-functions>`_
 for more information.
-
-Collections of functions intended to be installer into
-your ``~/.config/fish/`` configuration directory.
-
-- Install with **Fisher**, the *de facto* Fish community plugin manager. 
-- Can also be installed manually.
 
 Function Collections
 --------------------
@@ -22,7 +26,7 @@ Alignment
 
 Functions to horizontally and vertically align data. See
 `fish-functions-alignment
-<https://grscheller.github.io/fish-functions-alignment>`_
+<https://grscheller.github.io/fish-functions-alignment.fish>`_
 for more information.
 
 - Horizontal column alignment commands
@@ -38,7 +42,7 @@ Path
 
 Path manipulation and navigation. See
 `fish-functions-path
-<https://grscheller.github.io/fish-functions-path>`_
+<https://grscheller.github.io/fish-functions-path.fish>`_
 for more information.
 
 - Directory navigation
