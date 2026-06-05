@@ -67,8 +67,10 @@ for more information.
 
   - digpath - Looks for targets on $PATH.
 
-    - Like "type -P" builtin.
+    - Like the fish "type -P" builtin.
     - Does not stop after finding the first match.
+    - An alternate $PATH can be provided.
+    - Targets do not have to be executable.
 
 Copyright and License
 ---------------------
