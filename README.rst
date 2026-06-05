@@ -2,7 +2,8 @@ Fish Functions
 ==============
 
 Collections of fish functions geared to the Linux commandline.
-`fish-functions <https://grscheller.github.io/functions.html>`_.
+`fish-functions
+<https://grscheller.github.io/fish-functions>`_.
 
 Collections of functions intended to be installer into
 your ``~/.config/fish/`` configuration directory.
@@ -18,8 +19,9 @@ Each section below is designed to be installed as a unit.
 Alignment
 ~~~~~~~~~
 
-Functions to horizontally and vertically align data. Repo:
-`fish-functions-alignment <https://github.com/grscheller/fish-function-alignment`_.
+Functions to horizontally and vertically align data. See:
+`fish-functions-alignment
+<https://grscheller.github.io/fish-functions-altgnment>`_.
 
 - Horizontal column alignment commands
 
@@ -32,8 +34,9 @@ Functions to horizontally and vertically align data. Repo:
 Path manipulation and navigation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Path manipulation and navigation. Repo:
-`fish-functions-path <https://github.com/grscheller/fish-function-path`_.
+Path manipulation and navigation. See:
+`fish-functions-alignment
+<https://grscheller.github.io/fish-functions-path>`_.
 
 - Directory navigation
 
@@ -43,14 +46,6 @@ Path manipulation and navigation. Repo:
 - Path manipulation
 
   - **pathtrim**: Trim path of duplicate and non-existent directories
-
-
-Documentation
--------------
-
-Documentation and other links for these projects are hosted on
-`GitHub Pages
-<https://grscheller.github.io/fish-functions>`_.
 
 Copyright and License
 ---------------------
