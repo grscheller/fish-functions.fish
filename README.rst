@@ -1,7 +1,7 @@
 Fish Functions
 ==============
 
-Collections of fish functions geared to typical Linux/Unix
+Collections of fish functions plugins geared to modern Linux/Unix
 tooling. These functions are intended to be installer into
 your ``~/.config/fish/`` configuration files directory.
 
@@ -31,11 +31,11 @@ for more information.
 
 - Horizontal column alignment commands
 
-  - **zip2**: Combine 2 fish arrays with a separator into 2 columns.
-  - **zip**: Combine an arbitrary number of fish arrays with a separator into columns.
-  - **tab_align2**: Tab align 2 fish arrays into 2 columns.
-  - **tab_align**: Tab align an arbitrary number of fish arrays into columns.
-  - **fields**: Extract fields from rows.
+  - zip2: Combine 2 fish arrays with a separator into 2 columns.
+  - zip: Combine an arbitrary number of fish arrays with a separator into columns.
+  - tab_align2: Tab align 2 fish arrays into 2 columns.
+  - tab_align: Tab align an arbitrary number of fish arrays into columns.
+  - fields: Extract fields from rows.
 
 Path
 ~~~~
@@ -47,13 +47,13 @@ for more information.
 
 - Directory navigation
 
-  - **ud**: Jump up a number of directories or to an initial pattern
+  - ud: Jump up a number of directories or to an initial pattern
     in the file system.
-  - **dn**: Jump down directory tree to find a file or directory.
+  - dn: Jump down directory tree to find a file or directory.
 
 - Path manipulation
 
-  - **pathtrim**: Remove duplicate and non-existent directories from $PATH.
+  - pathtrim: Remove duplicate and non-existent directories from $PATH.
 
 Copyright and License
 ---------------------
