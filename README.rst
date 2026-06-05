@@ -66,7 +66,7 @@ for more information.
 - Path searching
 
   - digpath - Looks for targets on $PATH, like "type -P" builtin,
-              but does not stop after finding the first match.
+    but does not stop after finding the first match.
 
 Copyright and License
 ---------------------
