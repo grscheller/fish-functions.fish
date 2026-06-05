@@ -5,15 +5,14 @@ Collections of fish functions plugins geared to modern Linux/Unix
 tooling. These functions are intended to be installer into
 your ``~/.config/fish/`` configuration files directory.
 
-- Install with `fisher <https://github.com/jorgebucaran/fisher>`_
+- Install each plugin with `fisher <https://github.com/jorgebucaran/fisher>`_
 
   - Fisher is the *de facto* Fish community plugin manager. 
 
-- Can also be installed manually.
+- The plugins can also be installed manually.
 
-See
-`fish-functions
-<https://grscheller.github.io/fish-functions>`_
+See the ``fish-functions`` 
+`docs <https://grscheller.github.io/fish-functions>`_
 for more information.
 
 Plugin Collections
@@ -24,9 +23,9 @@ Each plugin below is designed to be installed as a unit.
 Alignment
 ~~~~~~~~~
 
-Functions to horizontally and vertically align data. See
-`grscheller/fish-functions-alignment.fish
-<https://grscheller.github.io/fish-functions-alignment.fish>`_
+Functions to horizontally and vertically align data.
+See the ``grscheller/fish-functions-alignment.fish``
+`docs <https://grscheller.github.io/fish-functions/alignment.html>`_
 for more information.
 
 - Horizontal column alignment commands
@@ -37,26 +36,23 @@ for more information.
   - tab_align - Tab align an arbitrary number of fish arrays into columns.
   - fields - Extract fields from rows.
 
-Navigation
-~~~~~~~~~~
+Navigate
+~~~~~~~~
 
-Filesystem navigation plugin. See
-`grscheller/fish-functions-navigation.fish
-<https://grscheller.github.io/fish-functions-navigation.fish>`_
+Filesystem navigation plugin. See the ``grscheller/fish-functions-navigate.fish``
+`docs <https://grscheller.github.io/fish-functions/navigate.html>`_
 for more information.
 
 - Directory navigation
 
-  - ud - Jump up a number of directories or to an initial pattern
-    in the file system.
-  - dn - Jump down directory tree to find a file or directory.
+  - ud - Jump up a number of directories or to an initial pattern in the file system.
+  - dn - Jump down directory tree to a file or directory.
 
 Path
 ~~~~
 
-Path manipulation and searching plugin. See
-`grscheller/fish-functions-path.fish
-<https://grscheller.github.io/fish-functions-path.fish>`_
+Path manipulation and searching plugin. See the ``grscheller/fish-functions-path.fish``
+`docs <https://grscheller.github.io/fish-functions/path.html>`_
 for more information.
 
 - Path manipulation
