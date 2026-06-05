@@ -25,7 +25,7 @@ Alignment
 ~~~~~~~~~
 
 Functions to horizontally and vertically align data. See
-`grscheller/fish-functions-alignment
+`grscheller/fish-functions-alignment.fish
 <https://grscheller.github.io/fish-functions-alignment.fish>`_
 for more information.
 
@@ -41,7 +41,7 @@ Path
 ~~~~
 
 Path manipulation and navigation plugin. See
-`grscheller/fish-functions-path
+`grscheller/fish-functions-path.fish
 <https://grscheller.github.io/fish-functions-path.fish>`_
 for more information.
 
