@@ -37,12 +37,12 @@ for more information.
   - tab_align - Tab align an arbitrary number of fish arrays into columns.
   - fields - Extract fields from rows.
 
-Path
-~~~~
+Navigation
+~~~~~~~~~~
 
-Path manipulation and navigation plugin. See
-`grscheller/fish-functions-path.fish
-<https://grscheller.github.io/fish-functions-path.fish>`_
+Filesystem navigation plugin. See
+`grscheller/fish-functions-navigation.fish
+<https://grscheller.github.io/fish-functions-navigation.fish>`_
 for more information.
 
 - Directory navigation
@@ -51,9 +51,22 @@ for more information.
     in the file system.
   - dn - Jump down directory tree to find a file or directory.
 
+Path
+~~~~
+
+Path manipulation and searching plugin. See
+`grscheller/fish-functions-path.fish
+<https://grscheller.github.io/fish-functions-path.fish>`_
+for more information.
+
 - Path manipulation
 
   - pathtrim - Remove duplicate and non-existent directories from $PATH.
+
+- Path searching
+
+  - digpath - Looks for targets on $PATH, like "type -P" builtin,
+              but does not stop after finding the first match.
 
 Copyright and License
 ---------------------
