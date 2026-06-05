@@ -1,7 +1,7 @@
 Fish Functions
 ==============
 
-Collections of fish functions geared to the Linux commandline.
+Collections of fish functions geared to the Linux command line.
 `fish-functions
 <https://grscheller.github.io/fish-functions>`_.
 
@@ -21,31 +21,32 @@ Alignment
 
 Functions to horizontally and vertically align data. See:
 `fish-functions-alignment
-<https://grscheller.github.io/fish-functions-altgnment>`_.
+<https://grscheller.github.io/fish-functions-alignment>`_.
 
 - Horizontal column alignment commands
 
-  - **zip2**: Zipper together 2 fish arrays with a separator.
-  - **tab_align2**: Tab align 2 fish arrays into columns.
-  - **zip**: Zipper together an arbitrary number of fish arrays with a separator.
+  - **zip2**: Combine 2 fish arrays with a separator into 2 columns.
+  - **zip**: Combine an arbitrary number of fish arrays with a separator into columns.
+  - **tab_align2**: Tab align 2 fish arrays into 2 columns.
   - **tab_align**: Tab align an arbitrary number of fish arrays into columns.
   - **fields**: Extract fields from rows.
 
-Path manipulation and navigation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Path
+~~~~
 
 Path manipulation and navigation. See:
-`fish-functions-alignment
+`fish-functions-path
 <https://grscheller.github.io/fish-functions-path>`_.
 
 - Directory navigation
 
   - **ud**: Jump up a number of directories, or to an initial pattern
-  - **dn**: Jump down directory tree to find a file or directory
+    in file system.
+  - **dn**: Jump down directory tree to find a file or directory.
 
 - Path manipulation
 
-  - **pathtrim**: Trim path of duplicate and non-existent directories
+  - **pathtrim**: Remove duplicate and non-existent directories from $PATH.
 
 Copyright and License
 ---------------------
