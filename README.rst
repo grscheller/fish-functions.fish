@@ -1,9 +1,10 @@
 Fish Functions
 ==============
 
-Collections of fish functions geared to the Linux command line.
+Collections of fish functions geared to the Linux command line. See
 `fish-functions
-<https://grscheller.github.io/fish-functions>`_.
+<https://grscheller.github.io/fish-functions>`_
+for more information.
 
 Collections of functions intended to be installer into
 your ``~/.config/fish/`` configuration directory.
@@ -19,9 +20,10 @@ Each section below is designed to be installed as a unit.
 Alignment
 ~~~~~~~~~
 
-Functions to horizontally and vertically align data. See:
+Functions to horizontally and vertically align data. See
 `fish-functions-alignment
-<https://grscheller.github.io/fish-functions-alignment>`_.
+<https://grscheller.github.io/fish-functions-alignment>`_
+for more information.
 
 - Horizontal column alignment commands
 
@@ -34,14 +36,15 @@ Functions to horizontally and vertically align data. See:
 Path
 ~~~~
 
-Path manipulation and navigation. See:
+Path manipulation and navigation. See
 `fish-functions-path
-<https://grscheller.github.io/fish-functions-path>`_.
+<https://grscheller.github.io/fish-functions-path>`_
+for more information.
 
 - Directory navigation
 
-  - **ud**: Jump up a number of directories, or to an initial pattern
-    in file system.
+  - **ud**: Jump up a number of directories or to an initial pattern
+    in the file system.
   - **dn**: Jump down directory tree to find a file or directory.
 
 - Path manipulation
