@@ -3,7 +3,7 @@ Fish Functions
 
 Collections of fish functions geared to typical Linux/Unix
 tooling. These functions are intended to be installer into
-your ``~/.config/fish/`` configuration files.
+your ``~/.config/fish/`` configuration files directory.
 
 - Install with `fisher <https://github.com/jorgebucaran/fisher>`_
 
@@ -16,16 +16,16 @@ See
 <https://grscheller.github.io/fish-functions>`_
 for more information.
 
-Function Collections
---------------------
+Plugin Collections
+------------------
 
-Each section below is designed to be installed as a unit.
+Each plugin below is designed to be installed as a unit.
 
 Alignment
 ~~~~~~~~~
 
 Functions to horizontally and vertically align data. See
-`fish-functions-alignment
+`grscheller/fish-functions-alignment
 <https://grscheller.github.io/fish-functions-alignment.fish>`_
 for more information.
 
@@ -40,8 +40,8 @@ for more information.
 Path
 ~~~~
 
-Path manipulation and navigation. See
-`fish-functions-path
+Path manipulation and navigation plugin. See
+`grscheller/fish-functions-path
 <https://grscheller.github.io/fish-functions-path.fish>`_
 for more information.
 
