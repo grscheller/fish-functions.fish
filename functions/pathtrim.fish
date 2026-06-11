@@ -1,56 +1,71 @@
-function fields --description 'Extract fields from lines'
+function pathtrim --description 'Canonicalize $PATH'
+
+    set -f Path ()
+    set -f NewPath ()
+
     # Parse cmdline options
-    argparse -n fields 's/separator=' h/help -- $argv
+    argparse -n pathtrim h/help -- $argv
+    and begin
+        if [ (count $argv) -gt 0 ]
+            set Path $argv
+        else
+            set Path $PATH
+        end
+        true
+    end
     or begin
-        printf '        For usage type: fields -h\n' >&2
-        return 4
+        printf '              For usage type: pathtrim -h\n'
+        return 2
     end
 
     # Print help message and quit
     if set -q _flag_help
-        printf 'Description: Extract fields from lines, from\n' >&2
-        printf '             files or stdin.  Basically a\n' >&2
-        printf '             wrapper for an awk command.\n\n' >&2
-        printf 'Usage: fields' >&2
-        printf ' [-s|--separator str] n m ... file1 file2 ...\n' >&2
-        printf '       fields [-h|--help]\n' >&2
-        printf '       where n m are field positions,\n' >&2
-        printf '       str is a string separating the fields,\n' >&2
-        printf '       file1 file2 are file names\n\n' >&2
-        printf 'Output: prints matches to stdout,\n' >&2
-        printf '        prints help message to stderr if -h given\n\n' >&2
-        printf 'Exit Status: 3 if -h or --help option given\n' >&2
-        printf '             4 if an invalid option or argument given\n' >&2
-        printf '             5 if no field positions were given\n' >&2
-        printf '             Otherwise, exit status of underlying awk command\n' >&2
-        return 3
+        printf 'Usage: pathtrim\n' >&2
+        printf '       pathtrim $PATH_VARIABLE\n' >&2
+        printf '       pathtrim [-h|--help]\n\n' >&2
+        printf 'Returns: 0 if "happy path" followed\n' >&2
+        printf '         1 if -h or --help option given\n' >&2
+        printf '         2 for invalid option or argument number\n\n' >&2
+        printf 'Side Effects: Trims off duplicate & non-existant path ' >&2
+        printf 'components and print to stdout.\n' >&2
+        printf '              Print help to stderr if -h given.\n' >&2
+        return 1
     end
 
-    # If argument null, not interested in existence of containing directory.
-    set -f Arg
-    set -f Fields ()
-    set -f Files ()
-    for Arg in $argv
-        if string match -qr '^[1-9]\d*$' $Arg
-            set -a Fields $Arg
-        else if [ -f $Arg ] && [ -r $Arg ]
-            set -a Files $Arg
-        else
-            printf '\nError: Argument "%s" is neither Field' $Arg[1] >&2
-            printf ' position nor readable regular file\n' >&2
-            return 4
+    # Make sure we have a proper readlink shell utility,
+    # iMac shell utilities are old and crusty.
+    set -l READLINK readlink
+    type -q greadlink && set READLINK greadlink
+
+    # Check if absolute path component exist and are directories,
+    # also get real locations of these components.
+    set -f Dir
+    set -f Dirs ()
+    for Dir in $Path
+        if string match -q -v '/*' $Dir
+            set -a Dirs "$Dir"
+        else if test -d "$Dir"
+            set -a Dirs ($READLINK -e "$Dir")
         end
     end
 
-    if set -q Fields[1]
-        if set -q _flag_separator
-            awk -F $_flag_separator[1] '{ print '(string join ', ' \$$Fields)' }' $Files
-        else
-            awk '{ print '(string join ', ' \$$Fields)' }' $Files
+    # Delete duplicate directories
+    set Path ()
+    set -f DirFound
+    for Dir in $Dirs
+        set -l Found no
+        for DirFound in $Path
+            test "$Dir" = "$DirFound"
+            and set Found yes
+            and break
         end
-    else
-        printf '\nError: No Field positions' >&2
-        printf ' were given on commandline\n' >&2
-        return 5
+        test "$Found" = no
+        and set -a Path "$Dir"
     end
+
+    # Print cleaned up path to stdout
+    printf %s\n $Path
+
+    return 0
+
 end

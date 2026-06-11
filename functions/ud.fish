@@ -1,56 +1,107 @@
-function fields --description 'Extract fields from lines'
-    # Parse cmdline options
-    argparse -n fields 's/separator=' h/help -- $argv
-    or begin
-        printf '        For usage type: fields -h\n' >&2
-        return 4
+function ud --description 'Jump up multiple directories, default is 1'
+    if test (count $argv) -gt 1
+        printf 'ud: ud only takes 0 or 1 arguments\n\n'
+        return 2
     end
 
-    # Print help message and quit
-    if set -q _flag_help
-        printf 'Description: Extract fields from lines, from\n' >&2
-        printf '             files or stdin.  Basically a\n' >&2
-        printf '             wrapper for an awk command.\n\n' >&2
-        printf 'Usage: fields' >&2
-        printf ' [-s|--separator str] n m ... file1 file2 ...\n' >&2
-        printf '       fields [-h|--help]\n' >&2
-        printf '       where n m are field positions,\n' >&2
-        printf '       str is a string separating the fields,\n' >&2
-        printf '       file1 file2 are file names\n\n' >&2
-        printf 'Output: prints matches to stdout,\n' >&2
-        printf '        prints help message to stderr if -h given\n\n' >&2
-        printf 'Exit Status: 3 if -h or --help option given\n' >&2
-        printf '             4 if an invalid option or argument given\n' >&2
-        printf '             5 if no field positions were given\n' >&2
-        printf '             Otherwise, exit status of underlying awk command\n' >&2
-        return 3
+    # Pop up one directory for no arguments or an empty string given
+    if test (count $argv) -eq 0 || test -z $argv[1]
+        cd ..
+        return $status
     end
 
-    # If argument null, not interested in existence of containing directory.
-    set -f Arg
-    set -f Fields ()
-    set -f Files ()
-    for Arg in $argv
-        if string match -qr '^[1-9]\d*$' $Arg
-            set -a Fields $Arg
-        else if [ -f $Arg ] && [ -r $Arg ]
-            set -a Files $Arg
+    set -f target $argv[1]
+    set -f cnt 1
+    set -f upDir ..
+    set -f maxUp (math (string split / (pwd) | count) - 1)
+
+    # If the target given was a number, jump up that number of directories
+    if string match -qr -- '^[1-9]\d*$' $target
+        set maxUp (math "min($target, $maxUp)")
+        while test $cnt -lt $maxUp
+            set upDir ../$upDir
+            set cnt (math $cnt + 1)
+        end
+        cd $upDir
+        return $status
+    end
+
+    set -f targetsFound
+    set -f targetFound ""
+    set -f currDir (path basename (pwd))
+
+    # Exact match
+    while test $cnt -le $maxUp
+        if test -e $upDir/$target
+            if test "$upDir" != ..
+                set targetFound $upDir/$target
+                break
+            else
+                if test "$target" != "$currDir"
+                    set targetFound $upDir/$target
+                    break
+                end
+            end
+        end
+        set upDir ../$upDir
+        set cnt (math $cnt + 1)
+    end
+
+    # Leading match
+    if test -z $targetFound
+        set cnt 1
+        set upDir ..
+
+        while test $cnt -le $maxUp
+            set targetsFound $upDir/$target*
+
+            if test "$upDir" = ..
+                set -l targets ()
+                for trgt in $targetsFound
+                    if test "$trgt" != "../$currDir"
+                        set targets $targets $trgt
+                    end
+                end
+                set targetsFound $targets
+            end
+
+            if test (count $targetsFound) -gt 0
+                break
+            end
+
+            set upDir ../$upDir
+            set cnt (math $cnt + 1)
+        end
+
+        set -l numFound (count $targetsFound)
+
+        if test $numFound -gt 1
+            # for multiple matches, randomly select one
+            set -l targets (string replace -r ^(string repeat -n (math "2 + 3*($cnt - 1)") .) "" $targetsFound)
+            set targetFound $upDir/$targets[(random 1 $numFound)]
         else
-            printf '\nError: Argument "%s" is neither Field' $Arg[1] >&2
-            printf ' position nor readable regular file\n' >&2
-            return 4
+            if test $numFound -eq 1
+                set targetFound $targetsFound
+            end
         end
     end
 
-    if set -q Fields[1]
-        if set -q _flag_separator
-            awk -F $_flag_separator[1] '{ print '(string join ', ' \$$Fields)' }' $Files
-        else
-            awk '{ print '(string join ', ' \$$Fields)' }' $Files
-        end
+    # Set destination directory to jump up to
+    set -f destination
+    if test -z "$targetFound"
+        printf 'ud: "%s" not found above current directory\n\n' $target
+        return 1
+    end
+    if test -d "$targetFound"
+        set destination $targetFound
     else
-        printf '\nError: No Field positions' >&2
-        printf ' were given on commandline\n' >&2
-        return 5
+        set destination (dirname $targetFound)
     end
+
+    # Jump up or whine
+    if cd $destination[1] 2>/dev/null
+        return 0
+    end
+    printf 'ud: failed to cd to "%s"\n    for target "%s"\n\n' $destination $target
+    return 3
 end

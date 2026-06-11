@@ -1,56 +1,40 @@
-function fields --description 'Extract fields from lines'
-    # Parse cmdline options
-    argparse -n fields 's/separator=' h/help -- $argv
-    or begin
-        printf '        For usage type: fields -h\n' >&2
-        return 4
-    end
+function zip2 --description 'Print 2 shell arrays zipped together with separator'
 
-    # Print help message and quit
-    if set -q _flag_help
-        printf 'Description: Extract fields from lines, from\n' >&2
-        printf '             files or stdin.  Basically a\n' >&2
-        printf '             wrapper for an awk command.\n\n' >&2
-        printf 'Usage: fields' >&2
-        printf ' [-s|--separator str] n m ... file1 file2 ...\n' >&2
-        printf '       fields [-h|--help]\n' >&2
-        printf '       where n m are field positions,\n' >&2
-        printf '       str is a string separating the fields,\n' >&2
-        printf '       file1 file2 are file names\n\n' >&2
-        printf 'Output: prints matches to stdout,\n' >&2
-        printf '        prints help message to stderr if -h given\n\n' >&2
-        printf 'Exit Status: 3 if -h or --help option given\n' >&2
-        printf '             4 if an invalid option or argument given\n' >&2
-        printf '             5 if no field positions were given\n' >&2
-        printf '             Otherwise, exit status of underlying awk command\n' >&2
-        return 3
-    end
+    set -f sep ' '
 
-    # If argument null, not interested in existence of containing directory.
-    set -f Arg
-    set -f Fields ()
-    set -f Files ()
-    for Arg in $argv
-        if string match -qr '^[1-9]\d*$' $Arg
-            set -a Fields $Arg
-        else if [ -f $Arg ] && [ -r $Arg ]
-            set -a Files $Arg
-        else
-            printf '\nError: Argument "%s" is neither Field' $Arg[1] >&2
-            printf ' position nor readable regular file\n' >&2
-            return 4
-        end
-    end
-
-    if set -q Fields[1]
-        if set -q _flag_separator
-            awk -F $_flag_separator[1] '{ print '(string join ', ' \$$Fields)' }' $Files
-        else
-            awk '{ print '(string join ', ' \$$Fields)' }' $Files
-        end
+    if argparse s/sep= -- $argv
+        set -q _flag_sep
+        and set sep $_flag_sep
     else
-        printf '\nError: No Field positions' >&2
-        printf ' were given on commandline\n' >&2
-        return 5
+        return 1
     end
+
+    if test (count $argv) -eq 2
+        if not set -q $argv[1] || not set -q $argv[2]
+            if not set -q $argv[1]
+                printf "Error zip2: shell variable \"$argv[1]\" not defined\n" >&2
+            end
+            if not set -q $argv[2]
+                printf "Error zip2: shell variable \"$argv[2]\" not defined\n" >&2
+            end
+            return 1
+        end
+        eval set -f arr1 \$$argv[1]
+        eval set -f arr2 \$$argv[2]
+    else
+        printf 'Error zip2: wrong number of arguments given\n' >&2
+    end
+
+    set -l len1 (count $arr1)
+    set -l len2 (count $arr2)
+    if test "$len1" -lt "$len2"
+        set -f len $len1
+    else
+        set -f len $len2
+    end
+
+    for ii in (seq $len)
+        printf '%s%s%s\n' $arr1[$ii] $sep $arr2[$ii]
+    end
+
 end
