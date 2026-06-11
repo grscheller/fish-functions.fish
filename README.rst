@@ -1,59 +1,53 @@
-Fish Functions
-==============
+grscheller/fish-functions.fish
+==============================
 
-Collections of fish functions plugins geared to modern Linux/Unix
-tooling. These functions are intended to be installer into
-your ``~/.config/fish/`` configuration files directory.
+Collections of fish functions I use in my dotfiles. Packaged
+separately from the rest of my dotfiles. For those who would
+find these functions useful but don't want the other personalize
+cruft that comes with my dotfiles.
 
-- Install each plugin with `fisher <https://github.com/jorgebucaran/fisher>`_
+- Install this plugin with `fisher <https://github.com/jorgebucaran/fisher>`_
 
   - Fisher is the *de facto* Fish community plugin manager. 
 
 - The plugins can also be installed manually.
 
-See the ``fish-functions`` 
-`docs <https://grscheller.github.io/fish-functions>`_
-for more information.
+See the `grscheller/fish-functions.fish docs
+<https://grscheller.github.io/fish-functions.fish>`_
+for more detailed documentation and examples.
 
-Plugin Collections
-------------------
+Plugin Categories
+-----------------
 
-Each plugin below is designed to be installed as a unit.
+Broad categories of the functions provided by this package.
 
 Alignment
 ~~~~~~~~~
 
 Functions to horizontally and vertically align data.
-See the ``grscheller/fish-functions-alignment.fish``
-`docs <https://grscheller.github.io/fish-functions/alignment.html>`_
-for more information.
 
 - Horizontal column alignment commands
 
   - zip2 - Combine 2 fish arrays with a separator into 2 columns.
-  - zip - Combine an arbitrary number of fish arrays with a separator into columns.
+  - zip - Combine an arbitrary number of fish arrays with a separator into columns. (TODO)
   - tab_align2 - Tab align 2 fish arrays into 2 columns.
-  - tab_align - Tab align an arbitrary number of fish arrays into columns.
+  - tab_align - Tab align an arbitrary number of fish arrays into columns. (TODO)
   - fields - Extract fields from rows.
 
-Navigate
-~~~~~~~~
+Filesystem Navigatation
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Filesystem navigation plugin. See the ``grscheller/fish-functions-navigate.fish``
-`docs <https://grscheller.github.io/fish-functions/navigate.html>`_
-for more information.
+Filesystem navigation functions.
 
 - Directory navigation
 
-  - ud - Jump up a number of directories or to an initial pattern in the file system.
+  - ud - Jump up a number of directories or to an initial pattern in the filesystem.
   - dn - Jump down directory tree to a file or directory.
 
 Path
 ~~~~
 
-Path manipulation and searching plugin. See the ``grscheller/fish-functions-path.fish``
-`docs <https://grscheller.github.io/fish-functions/path.html>`_
-for more information.
+Path manipulation and searching functions.
 
 - Path manipulation
 
