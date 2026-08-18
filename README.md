@@ -1,5 +1,4 @@
-grscheller/fish-functions.fish
-==============================
+# grscheller/fish-functions.fish
 
 Collections of fish functions I use in my dotfiles. Packaged
 separately from the rest of my dotfiles. For those who would
@@ -12,17 +11,33 @@ cruft that comes with my dotfiles.
 
 - The plugins can also be installed manually.
 
-See the `grscheller/fish-functions.fish docs
-<https://grscheller.github.io/fish-functions.fish>`_
-for more detailed documentation and examples.
-
-Plugin Categories
------------------
+## Plugin Categories
 
 Broad categories of the functions provided by this package.
 
-Alignment
-~~~~~~~~~
+### Filesystem Navigation
+
+Filesystem navigation functions.
+
+- Directory navigation
+
+  - ud - Jump up a number of directories or to an initial pattern in the filesystem.
+  - dn - Jump down directory tree to a file or directory.
+
+### Path Manipulation and Searching
+
+Path manipulation and searching functions.
+
+- Path manipulation
+  - pathtrim - Remove duplicate and non-existent directories from $PATH.
+- Path searching
+  - digpath - Looks for targets on $PATH.
+    - Like the fish "type -P" builtin.
+    - Does not stop after finding the first match.
+    - An alternate $PATH can be provided.
+    - Targets do not have to be executable.
+
+### Text Alignment
 
 Functions to horizontally and vertically align data.
 
@@ -34,36 +49,8 @@ Functions to horizontally and vertically align data.
   - tab_align - Tab align an arbitrary number of fish arrays into columns. (TODO)
   - fields - Extract fields from rows.
 
-Filesystem Navigatation
-~~~~~~~~~~~~~~~~~~~~~~~
 
-Filesystem navigation functions.
+## Copyright and License
 
-- Directory navigation
-
-  - ud - Jump up a number of directories or to an initial pattern in the filesystem.
-  - dn - Jump down directory tree to a file or directory.
-
-Path
-~~~~
-
-Path manipulation and searching functions.
-
-- Path manipulation
-
-  - pathtrim - Remove duplicate and non-existent directories from $PATH.
-
-- Path searching
-
-  - digpath - Looks for targets on $PATH.
-
-    - Like the fish "type -P" builtin.
-    - Does not stop after finding the first match.
-    - An alternate $PATH can be provided.
-    - Targets do not have to be executable.
-
-Copyright and License
----------------------
-
-Copyright (c) 2021-2026 Geoffrey R. Scheller. Licensed under the Apache
+Copyright (c) 2026 Geoffrey R. Scheller. Licensed under the Apache
 License, Version 2.0. See the LICENSE file for details.
