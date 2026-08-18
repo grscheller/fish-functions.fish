@@ -19,25 +19,30 @@ cruft that comes with my dotfiles.
 
 ### Filesystem Navigation
 
-Filesystem navigation functions.
-
-- Directory navigation
-
-  - ud - Jump up a number of directories or to an initial pattern in:wq the filesystem.
-  - dn - Jump down directory tree to a file or directory.
+  - **ud** 
+    - jump up a number of directories
+    - jump up to a directory with
+      - with an initial string in directory name, or 
+      - containing a file with an initial string in file name
+  - **dn**
+    - jump down directory tree to a directory
+      - with an initial string in directory name, or 
+      - containing a file with an initial string in file name
 
 ### Path Manipulation and Searching
 
 Path manipulation and searching functions.
 
-- Path manipulation
-  - pathtrim - Remove duplicate and non-existent directories from $PATH.
-- Path searching
-  - digpath - Looks for targets on $PATH.
-    - Like the fish "type -P" builtin.
-    - Does not stop after finding the first match.
-    - An alternate $PATH can be provided.
-    - Targets do not have to be executable.
+- **pathtrim**
+  - Remove duplicate and non-existent directories from
+    - the arguments given
+    - $PATH if no arguments are given
+- **digpath**
+  - looks for targets on $PATH
+    - like the `type -P` fish builtin
+    - does not stop after finding the first match
+    - an alternate $PATH can be provided as arguments
+    - targets do not have to be executable
 
 ### Text Alignment
 
@@ -45,11 +50,16 @@ Functions to horizontally and vertically align data.
 
 - Horizontal column alignment commands
 
-  - zip2 - Combine 2 fish arrays with a separator into 2 columns.
-  - zip - Combine an arbitrary number of fish arrays with a separator into columns. (TODO)
-  - tab_align2 - Tab align 2 fish arrays into 2 columns.
-  - tab_align - Tab align an arbitrary number of fish arrays into columns. (TODO)
-  - fields - Extract fields from rows.
+  - **zip2**
+    - Combine 2 fish arrays with a separator into 2 columns.
+  - **zip**
+    - Combine an arbitrary number of fish arrays with a separator into columns. (TODO)
+  - **tab_align2**
+    - Tab align 2 fish arrays into 2 columns.
+  - **tab_align**
+    - Tab align an arbitrary number of fish arrays into columns. (TODO)
+  - **fields**
+    - Extract fields from rows.
 
 
 ## Copyright and License
