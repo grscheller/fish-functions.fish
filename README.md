@@ -1,4 +1,4 @@
-# grscheller/fish-functions.fish
+# Fish functions for dotfiles
 
 Collections of fish functions I use in my dotfiles. Packaged
 separately from the rest of my dotfiles. For those who would
@@ -13,7 +13,9 @@ cruft that comes with my dotfiles.
 
 ## Plugin Categories
 
-Broad categories of the functions provided by this package.
+- [Filesystem Navigation](#filesystem-navigation)
+- [Path Manipulation and Searching](#path-manipulation-and-searching)
+- [Text Alignment](#text-alignment)
 
 ### Filesystem Navigation
 
@@ -21,7 +23,7 @@ Filesystem navigation functions.
 
 - Directory navigation
 
-  - ud - Jump up a number of directories or to an initial pattern in the filesystem.
+  - ud - Jump up a number of directories or to an initial pattern in:wq the filesystem.
   - dn - Jump down directory tree to a file or directory.
 
 ### Path Manipulation and Searching
