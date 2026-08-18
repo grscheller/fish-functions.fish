@@ -50,14 +50,14 @@ Functions to horizontally and vertically align data.
 
 - Horizontal column alignment commands
 
-  - **zip2**
+  - **zip2** 
     - Combine 2 fish arrays with a separator into 2 columns.
-  - **zip**
-    - Combine an arbitrary number of fish arrays with a separator into columns. (TODO)
+  - **zip** (TODO)
+    - Combine an arbitrary number of fish arrays with a separator into columns.
   - **tab_align2**
     - Tab align 2 fish arrays into 2 columns.
-  - **tab_align**
-    - Tab align an arbitrary number of fish arrays into columns. (TODO)
+  - **tab_align** (TODO)
+    - Tab align an arbitrary number of fish arrays into columns.
   - **fields**
     - Extract fields from rows.
 
