@@ -36,7 +36,10 @@ Path manipulation and searching functions.
 - **pathtrim**
   - Remove duplicate and non-existent directories from
     - the arguments given
-    - $PATH if no arguments are given
+    - use $PATH if no arguments are given
+    - existing relative component are resolved against the cwd
+    - if relative components are desired (not recommended)
+      - append to path after running pathtrim
 - **digpath**
   - looks for targets on $PATH
     - like the `type -P` fish builtin
