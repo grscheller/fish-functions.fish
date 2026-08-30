@@ -37,15 +37,17 @@ function pathtrim --description 'Canonicalize $PATH'
     set -l READLINK readlink
     type -q greadlink && set READLINK greadlink
 
-    # Keep only path components that are existing directories, replaced
-    # components by their canonical absolute paths. Relative components
-    # are NOT intended to be on the trimmed path. Therefore, A relative
-    # component that happens to exist is resolved against the current
-    # working directory, freezing it to wherever the shell was when
-    # pathtrim ran.
+    # Keep only path components that are existing directories, empty
+    # components are dropped. Path components are replaced by their
+    # canonical absolute paths.
     #
-    # Note: If relative components are desired (not recommended) add
-    # them after calling pathtrim.
+    # Relative components are NOT intended to be on the trimmed path.
+    # A relative component that happens to exist is resolved against
+    # the current working directory, freezing it to wherever the shell
+    # was when pathtrim ran.
+    #
+    # If relative components are desired (not recommended) add them
+    # after calling pathtrim.
     set -f Dir
     set -f Dirs ()
     for Dir in $Path
