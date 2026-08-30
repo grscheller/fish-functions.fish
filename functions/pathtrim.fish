@@ -33,20 +33,19 @@ function pathtrim --description 'Canonicalize $PATH'
     end
 
     # Make sure we have a proper readlink shell utility,
-    # iMac shell utilities are old and crusty.
+    # Mac shell utilities are old and crusty.
     set -l READLINK readlink
     type -q greadlink && set READLINK greadlink
 
-    # Check if absolute path component exist and are directories,
-    # also get real locations of these components.
+    # Check if path component exist and are directories, replace with
+    # absolute path components of the real locations. Note that for any
+    # relative path components the absolute paths will be evaluated
+    # relative to the current working directory.
     set -f Dir
     set -f Dirs ()
     for Dir in $Path
-        if string match -q -v '/*' $Dir
-            set -a Dirs "$Dir"
-        else if test -d "$Dir"
-            set -a Dirs ($READLINK -e "$Dir")
-        end
+        test -d "$Dir"
+        and set -a Dirs ($READLINK -e "$Dir")
     end
 
     # Delete duplicate directories
